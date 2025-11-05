@@ -1,0 +1,52 @@
+=====================================
+  Git Cheat Sheet
+=====================================
+ Common commands:
+  git status              → Show changed files
+  git add .               → Stage all new/modified files
+  git commit -m "msg"     → Commit with message
+  git push origin main    → Push to GitHub
+
+ Other useful flags:
+  git commit -am "msg"    → Add & commit tracked files
+  git commit --amend -m "new msg"  → Edit last commit
+  git log --oneline       → Compact commit history
+
+ Branching:
+  git branch              → List branches
+  git checkout -b new-branch  → Create & switch
+  git checkout main       → Switch back to main
+
+ Safety:
+  git diff                → See unstaged changes
+  git restore filename    → Undo uncommitted changes
+  git rm -r folder/       → Remove folder (tracked)
+
+ Helpful reminders:
+  - Commit often with clear, short messages.
+  - Use 'git status' frequently to track changes.
+  - Use '.gitignore' to avoid adding large or temporary files.
+
+-------------------------------------
+Git Workflow:
+-------------------------------------
+
+1* Go to your  repo:
+   cd ~/galatic-rotation
+
+2* Copy or create your file:
+   cp /path/to/file.txt
+
+3* Check status:
+   git status
+
+4*Stage file(s):
+   git add file.txt
+   # or add everything:
+   git add .
+
+5* Commit changes with a message:
+   git commit -m "Describe your change"
+
+6* Push to GitHub:
+   git push origin main
