@@ -1,0 +1,11 @@
+------------------------------------------------------
+Job is running on node(s): node036
+------------------------------------------------------
+SLURM: Job running on host(s): headnode2
+SLURM: originating queue: core32
+SLURM: executing job in working directory: /beegfs/car/bxster25/oc-sscu
+SLURM: job identifier: 22732
+SLURM: job name: stan24_ncirc_core32
+SLURM: node file: node036
+SLURM: current home directory: /home2/bxster25
+SLURM: PATH = /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin

@@ -1,0 +1,171 @@
+------------------------------------------------------
+Job is running on node ------------------------------------------------------
+SLURM: qsub is running on headnode1
+SLURM: originating queue is core32
+SLURM: executing queue is core32
+SLURM: working directory is /beegfs/car/bxster25/circ-oc-sscu
+SLURM: job identifier is 22755
+SLURM: job name is stan22_circ_core32
+SLURM: node file is node065
+SLURM: current home directory is /home2/bxster25
+SLURM: PATH = /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+------------------------------------------------------
+Usage: Rscript [options] file [args]
+   or: Rscript [options] -e expr [-e expr2 ...] [args]
+A binary front-end to R, for use in scripting applications.
+
+Options:
+  --help              Print usage and exit
+  --version           Print version and exit
+  --verbose           Print information on progress
+  --default-packages=LIST  Attach these packages on startup;
+                        a comma-separated LIST of package names, or 'NULL'
+and options to R (in addition to --no-echo --no-restore), for example:
+  --save              Do save workspace at the end of the session
+  --no-environ        Don't read the site and user environment files
+  --no-site-file      Don't read the site-wide Rprofile
+  --no-init-file      Don't read the user R profile
+  --restore           Do restore previously saved objects at startup
+  --vanilla           Combine --no-save, --no-restore, --no-site-file,
+                        --no-init-file and --no-environ
+
+Expressions (one or more '-e <expr>') may be used *instead* of 'file'.
+Any additional 'args' can be accessed from R via 'commandArgs(TRUE)'.
+See also  ?Rscript  from within R.
+/soft/R-4.4.2/bin/Rscript
+
+SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
+
+SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 
+2).
+SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 3).
+
+SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 4).
+Chain 2: 
+Chain 2: Gradient evaluation took 0.010746 secondsChain 
+3Chain 2: : 
+1000 transitions using 10 leapfrog steps per transition would take 107.46 seconds.
+Chain Chain 3: 2Gradient evaluation took 0.010618 seconds
+: Adjust your expectations accordingly!Chain 
+3: Chain 1000 transitions using 10 leapfrog steps per transition would take 106.18 seconds.2: 
+
+Chain Chain 2: 3: 
+Adjust your expectations accordingly!
+Chain 3: 
+Chain 3: 
+Chain 1: 
+Chain 1: Gradient evaluation took 0.010222 seconds
+Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 102.22 seconds.
+Chain 1: Adjust your expectations accordingly!
+Chain 1: 
+Chain 1: 
+Chain 4: 
+Chain 4: Gradient evaluation took 0.010592 seconds
+Chain 4: 1000 transitions using 10 leapfrog steps per transition would take 105.92 seconds.
+Chain 4: Adjust your expectations accordingly!
+Chain 4: 
+Chain 4: 
+Chain 3: Iteration:     1 / 12000 [  0%]  (Warmup)
+Chain 2: Iteration:     1 / 12000 [  0%]  (Warmup)
+Chain 1: Iteration:     1 / 12000 [  0%]  (Warmup)
+Chain 4: Iteration:     1 / 12000 [  0%]  (Warmup)
+Chain Chain 3: 1Iteration:  1200 / 12000 [ 10%]  (Warmup)
+: Iteration:  1200 / 12000 [ 10%]  (Warmup)
+Chain 1: Iteration:  2400 / 12000 [ 20%]  (Warmup)
+Chain 3: Iteration:  2400 / 12000 [ 20%]  (Warmup)
+Chain 4: Iteration:  1200 / 12000 [ 10%]  (Warmup)
+Chain 1: Iteration:  3600 / 12000 [ 30%]  (Warmup)
+Chain 3: Iteration:  3600 / 12000 [ 30%]  (Warmup)
+Chain 1: Iteration:  4800 / 12000 [ 40%]  (Warmup)
+Chain 3: Iteration:  4800 / 12000 [ 40%]  (Warmup)
+Chain 1: Iteration:  6000 / 12000 [ 50%]  (Warmup)
+Chain 1: Iteration:  6001 / 12000 [ 50%]  (Sampling)
+Chain 3: Iteration:  6000 / 12000 [ 50%]  (Warmup)
+Chain 3: Iteration:  6001 / 12000 [ 50%]  (Sampling)
+Chain 1: Iteration:  7200 / 12000 [ 60%]  (Sampling)
+Chain 4: Iteration:  2400 / 12000 [ 20%]  (Warmup)
+Chain 3: Iteration:  7200 / 12000 [ 60%]  (Sampling)
+Chain 1: Iteration:  8400 / 12000 [ 70%]  (Sampling)
+Chain 3: Iteration:  8400 / 12000 [ 70%]  (Sampling)
+Chain 1: Iteration:  9600 / 12000 [ 80%]  (Sampling)
+Chain 3: Iteration:  9600 / 12000 [ 80%]  (Sampling)
+Chain 1: Iteration: 10800 / 12000 [ 90%]  (Sampling)
+Chain 3: Iteration: 10800 / 12000 [ 90%]  (Sampling)
+Chain 4: Iteration:  3600 / 12000 [ 30%]  (Warmup)
+Chain 1: Iteration: 12000 / 12000 [100%]  (Sampling)
+Chain 1: 
+Chain 1:  Elapsed Time: 30855.2 seconds (Warm-up)
+Chain 1:                13494.7 seconds (Sampling)
+Chain 1:                44349.8 seconds (Total)
+Chain 1: 
+Chain 3: Iteration: 12000 / 12000 [100%]  (Sampling)
+Chain 3: 
+Chain 3:  Elapsed Time: 31650.7 seconds (Warm-up)
+Chain 3:                13622.8 seconds (Sampling)
+Chain 3:                45273.5 seconds (Total)
+Chain 3: 
+Chain 4: Iteration:  4800 / 12000 [ 40%]  (Warmup)
+Chain 4: Iteration:  6000 / 12000 [ 50%]  (Warmup)
+Chain 4: Iteration:  6001 / 12000 [ 50%]  (Sampling)
+Chain 4: Iteration:  7200 / 12000 [ 60%]  (Sampling)
+Chain 4: Iteration:  8400 / 12000 [ 70%]  (Sampling)
+Chain 4: Iteration:  9600 / 12000 [ 80%]  (Sampling)
+Chain 4: Iteration: 10800 / 12000 [ 90%]  (Sampling)
+Chain 4: Iteration: 12000 / 12000 [100%]  (Sampling)
+Chain 4: 
+Chain 4:  Elapsed Time: 63348.5 seconds (Warm-up)
+Chain 4:                3790.22 seconds (Sampling)
+Chain 4:                67138.7 seconds (Total)
+Chain 4: 
+Chain 2: Iteration:  1200 / 12000 [ 10%]  (Warmup)
+Chain 2: Iteration:  2400 / 12000 [ 20%]  (Warmup)
+Chain 2: Iteration:  3600 / 12000 [ 30%]  (Warmup)
+Chain 2: Iteration:  4800 / 12000 [ 40%]  (Warmup)
+Chain 2: Iteration:  6000 / 12000 [ 50%]  (Warmup)
+Chain 2: Iteration:  6001 / 12000 [ 50%]  (Sampling)
+Chain 2: Iteration:  7200 / 12000 [ 60%]  (Sampling)
+Chain 2: Iteration:  8400 / 12000 [ 70%]  (Sampling)
+Chain 2: Iteration:  9600 / 12000 [ 80%]  (Sampling)
+Chain 2: Iteration: 10800 / 12000 [ 90%]  (Sampling)
+Chain 2: Iteration: 12000 / 12000 [100%]  (Sampling)
+Chain 2: 
+Chain 2:  Elapsed Time: 400301 seconds (Warm-up)
+Chain 2:                49200.1 seconds (Sampling)
+Chain 2:                449501 seconds (Total)
+Chain 2: 
+Time difference of 5.212888 days
+Sample size: 3665 
+Inference for Stan model: anon_model.
+4 chains, each with iter=12000; warmup=6000; thin=1; 
+post-warmup draws per chain=6000, total post-warmup draws=24000.
+
+       mean se_mean   sd   2.5%    25%    50%    75%  97.5% n_eff Rhat
+A     15.37    0.01 0.15  15.06  15.28  15.40  15.43  15.65   312 1.03
+B    -14.33    0.05 0.13 -14.61 -14.42 -14.32 -14.21 -14.13     9 1.18
+u0    10.03    0.02 0.14   9.75   9.98  10.01  10.11  10.32    73 1.06
+v0    11.22    0.05 0.15  11.01  11.08  11.20  11.34  11.54     9 1.23
+w0     7.12    0.02 0.08   6.98   7.07   7.12   7.18   7.28    19 1.12
+s_l    4.76    0.04 0.11   4.55   4.70   4.73   4.82   4.99     8 1.14
+s_b    3.26    0.04 0.08   3.10   3.22   3.24   3.31   3.44     5 1.25
+nu_l   2.07    0.06 0.11   1.88   2.00   2.05   2.15   2.30     4 1.44
+nu_b   2.54    0.09 0.16   2.20   2.44   2.56   2.62   2.87     3 1.50
+
+Samples were drawn using NUTS(diag_e) at Sun Oct 26 17:40:46 2025.
+For each parameter, n_eff is a crude measure of effective sample size,
+and Rhat is the potential scale reduction factor on split chains (at 
+convergence, Rhat=1).
+null device 
+          1 
+A <- 15.36661 
+B <- -14.3293 
+u0 <- 10.03357 
+v0 <- 11.22499 
+w0 <- 7.124648 
+s_l <- 4.755549 
+s_b <- 3.261881 
+nu_l <- 2.073335 
+nu_b <- 2.539973 
+scale t dist mul: 4.756 
+scale t dist mub: 3.262 
+------------------------------------------------------
+Job ends

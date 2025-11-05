@@ -1,0 +1,16 @@
+------------------------------------------------------
+Job is running on node ------------------------------------------------------
+SLURM: qsub is running on headnode1
+SLURM: originating queue is core32
+SLURM: executing queue is 
+SLURM: working directory is /beegfs/car/bxster25/circ-oc-sscu
+SLURM: execution mode is 
+SLURM: job identifier is 9374
+SLURM: job name is stan_circ_p12_core32
+SLURM: node file is node059
+SLURM: current home directory is /home2/bxster25
+SLURM: PATH = /usr/local/bin:/usr/local/sbin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+LD PATH =
+------------------------------------------------------
+------------------------------------------------------
+Job ends

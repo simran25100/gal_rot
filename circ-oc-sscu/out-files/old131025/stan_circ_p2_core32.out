@@ -1,0 +1,73 @@
+------------------------------------------------------
+Job is running on node ------------------------------------------------------
+SLURM: qsub is running on headnode2
+SLURM: originating queue is core32
+SLURM: executing queue is 
+SLURM: working directory is /beegfs/car/bxster25/circ-oc-sscu
+SLURM: execution mode is 
+SLURM: job identifier is 9435
+SLURM: job name is stan_circ_p2_core32
+SLURM: node file is node001
+SLURM: current home directory is /home2/bxster25
+SLURM: PATH = /usr/local/bin:/usr/local/sbin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+LD PATH =
+------------------------------------------------------
+Usage: Rscript [options] file [args]
+   or: Rscript [options] -e expr [-e expr2 ...] [args]
+A binary front-end to R, for use in scripting applications.
+
+Options:
+  --help              Print usage and exit
+  --version           Print version and exit
+  --verbose           Print information on progress
+  --default-packages=LIST  Attach these packages on startup;
+                        a comma-separated LIST of package names, or 'NULL'
+and options to R (in addition to --no-echo --no-restore), for example:
+  --save              Do save workspace at the end of the session
+  --no-environ        Don't read the site and user environment files
+  --no-site-file      Don't read the site-wide Rprofile
+  --no-init-file      Don't read the user R profile
+  --restore           Do restore previously saved objects at startup
+  --vanilla           Combine --no-save, --no-restore, --no-site-file,
+                        --no-init-file and --no-environ
+
+Expressions (one or more '-e <expr>') may be used *instead* of 'file'.
+Any additional 'args' can be accessed from R via 'commandArgs(TRUE)'.
+See also  ?Rscript  from within R.
+/soft/R-4.4.2/bin/Rscript
+
+SAMPLING
+SAMPLING FOR MODEL 'anon_model FOR MODEL 'anon_model' NOW (CHAIN 1' NOW (CHAIN ).
+4).
+
+SAMPLING
+ FOR MODEL 'anon_modelSAMPLING FOR MODEL '' NOW (CHAIN anon_model' NOW (CHAIN 23).
+).
+Chain 4: 
+Chain 4Chain : Gradient evaluation took 0.007681 seconds1: 
+Chain 
+Chain 4: 1: 1000 transitions using 10 leapfrog steps per transition would take 76.81 seconds.
+Gradient evaluation took 0.008369 seconds
+Chain Chain 14: : 1000 transitions using 10 leapfrog steps per transition would take 83.69 seconds.Adjust your expectations accordingly!
+
+Chain 4Chain 1: 
+: Adjust your expectations accordingly!Chain 4
+Chain : 
+1: 
+Chain 1: 
+Chain 3: 
+Chain 4Chain 3: Iteration:    1 / 8000 [  0%]  (Warmup): Chain 2
+Gradient evaluation took 0.007893 seconds
+: Chain 3
+Chain Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 78.93 seconds.2: : Iteration:    1 / 8000 [  0%]  (Warmup)
+Chain Gradient evaluation took 0.008194 seconds
+
+3: Chain 2Adjust your expectations accordingly!
+: 1000 transitions using 10 leapfrog steps per transition would take 81.94 seconds.Chain 3
+Chain : 
+2: Chain 3Adjust your expectations accordingly!
+: 
+Chain 2: 
+Chain 2: 
+Chain 3: Iteration:    1 / 8000 [  0%]  (Warmup)
+Chain 2: Iteration:    1 / 8000 [  0%]  (Warmup)

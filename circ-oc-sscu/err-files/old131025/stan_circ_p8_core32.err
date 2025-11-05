@@ -1,0 +1,3 @@
+cat: node070: No such file or directory
+/var/spool/slurmd/job09370/slurm_script: line 28: module: command not found
+/var/spool/slurmd/job09370/slurm_script: line 30: Rscript: command not found

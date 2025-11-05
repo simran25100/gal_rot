@@ -1,0 +1,16 @@
+------------------------------------------------------
+Job is running on node(s): node004
+node008
+------------------------------------------------------
+SLURM: Job running on host(s): headnode1
+SLURM: originating queue: core32
+SLURM: executing job in working directory: /beegfs/car/bxster25/oc-sscu
+SLURM: job identifier: 7649
+SLURM: job name: stan_test_core32
+SLURM: node file: node[004,008]
+SLURM: current home directory: /home2/bxster25
+SLURM: PATH = /usr/local/bin:/usr/local/sbin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+SLURM: LD_LIBRARY_PATH = 
+------------------------------------------------------
+------------------------------------------------------
+Job ends
