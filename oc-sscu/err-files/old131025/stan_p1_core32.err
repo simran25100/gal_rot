@@ -1,0 +1,49 @@
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+Loading required package: StanHeaders
+
+rstan version 2.32.6 (Stan version 2.32.2)
+
+For execution on a local, multicore CPU with excess RAM we recommend calling
+options(mc.cores = parallel::detectCores()).
+To avoid recompilation of unchanged Stan programs, we recommend calling
+rstan_options(auto_write = TRUE)
+For within-chain threading using `reduce_sum()` or `map_rect()` Stan functions,
+change `threads_per_chain` option:
+rstan_options(threads_per_chain = 1)
+
+Loading required package: grid
+Error in `filter()`:
+ℹ In argument: `astrometric_sigma5d_max < 0.5`.
+Caused by error:
+! object 'astrometric_sigma5d_max' not found
+Backtrace:
+     ▆
+  1. ├─df %>% ...
+  2. ├─dplyr::filter(...)
+  3. ├─dplyr:::filter.data.frame(...)
+  4. │ └─dplyr:::filter_rows(.data, dots, by)
+  5. │   └─dplyr:::filter_eval(...)
+  6. │     ├─base::withCallingHandlers(...)
+  7. │     └─mask$eval_all_filter(dots, env_filter)
+  8. │       └─dplyr (local) eval()
+  9. └─base::.handleSimpleError(...)
+ 10.   └─dplyr (local) h(simpleError(msg, call))
+ 11.     └─rlang::abort(message, class = error_class, parent = parent, call = error_call)
+Execution halted

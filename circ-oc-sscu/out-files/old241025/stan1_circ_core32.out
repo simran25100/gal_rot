@@ -1,0 +1,10 @@
+------------------------------------------------------
+Job is running on node(s): node001
+------------------------------------------------------
+SLURM: job id is 11362
+SLURM: job name is stan1_circ_core32
+SLURM: working directory is /beegfs/car/bxster25/circ-oc-sscu
+SLURM: nodes allocated = node001
+SLURM: tasks per node = 4
+SLURM: current home directory is /home2/bxster25
+SLURM: PATH = /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin

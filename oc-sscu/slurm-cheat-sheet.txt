@@ -1,0 +1,28 @@
+Slurm Commands Cheat Sheet
+
+🔍 Job Monitoring
+• List all your jobs (running + pending): squeue -u bxster25
+• List only running jobs: squeue -u bxster25 -t RUNNING
+• List only pending jobs: squeue -u bxster25 -t PENDING
+• Detailed info on a job: scontrol show job <jobid>
+• Check job output in real-time: tail -f slurm-<jobid>.out
+
+⚙️ Job Management
+• Submit a job script: sbatch myjob.slurm
+• Run interactively on the cluster:
+srun --partition=core32 --nodes=1 --ntasks=4 --time=01:00:00 --pty bash
+• Cancel one job: scancel <jobid>
+• Cancel all your jobs: scancel -u bxster25
+• Requeue a job: scontrol requeue <jobid>
+
+🖥️ Cluster Info
+• Show available partitions (queues) and limits: sinfo -s
+• Show all nodes with status: sinfo -N -l
+• Show why jobs/nodes are unavailable: sinfo -R
+
+🧹 Misc
+• Check your username: whoami
+• Check job environment variables: scontrol show job $SLURM_JOB_ID
+• Estimate job start time: squeue --start -j <jobid>
+• See the time stamps of files from newest to oldest: ls -lt
+
