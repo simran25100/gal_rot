@@ -124,7 +124,10 @@ lwd = 3.5
 par(mfrow = c(2, 4), mar = c(5, 5, 3, 2), bg = "white", cex.lab = cex, cex.axis = cex, cex.main = cex, xpd = FALSE)
 
 
-pdf("mclust_ABCKUVW_plots.pdf", width = 12, height = 8)  # adjust size as needed
+pdf("mclust_ABCKUVW_plots_github.pdf", width = 12, height = 8)  # adjust size as needed
+
+df$cluster <- NA
+cluster_offset <- 0
 
 for (i in seq_along(distance_ranges)) {
   
@@ -156,15 +159,13 @@ for (i in seq_along(distance_ranges)) {
   points(data_s$l, mu_l_sub,
          col = "#80808030", pch = 16, cex = 1)
   
-  # mul.mclust <- Mclust(mu_l_sub, G = 1:10, modelNames = 'VVV') 
-  # mul.mclust <- Mclust(mu_l_sub, G = 1:10)
-
   features <- cbind(data_s$l, mu_l_sub, data_s$dist_corr)
-  mul.mclust <- Mclust(features, G = 1:30)
+  mul.mclust <- Mclust(features, G = 1:20)
   # plot(mul.mclust,ylim = ylim, xlim = c(360, 0))
-  # data_s$cluster <- mul.mclust$classification
-  df$cluster[df$dist_corr >= d_min & df$dist_corr < d_max] <- mul.mclust$classification
+  new_clusters <- mul.mclust$classification + cluster_offset
+  df$cluster[bin_filter] <- new_clusters
   
+  cluster_offset <- max(df$cluster, na.rm = TRUE)  
   plot(mul.mclust, what = "BIC",
        main = paste("BIC — Bin", label))
   
@@ -178,30 +179,45 @@ for (i in seq_along(distance_ranges)) {
 
 # Close PDF
 dev.off()
-cluster = factor(df$cluster)
+df$cluster <- factor(df$cluster)
 
-X <- data.frame(
-  A_l =  cos(b) * cos(2*l),
-  C_l = -cos(b) * sin(2*l),
-  B   =  cos(b),
-  A_b = -sin(b) * cos(b) * sin(2*l),
-  C_b = -sin(b) * cos(b) * cos(2*l),
-  K   = -sin(b) * cos(b),
-  par_u = parallax * sin(l),
-  par_v = -parallax * cos(l),
-  par_u_b = parallax * cos(l) * sin(b),
-  par_v_b = parallax * sin(l) * sin(b),
-  par_w_b = -parallax * cos(b),
-  cluster = factor(df$cluster)
+# Longitude design matrix
+X_l <- data.frame(
+  mu_l =  mu_l,
+  A_l  =  cos(b) * cos(2*l),
+  C_l  = -cos(b) * sin(2*l),
+  B    =  cos(b),
+  par_u =  parallax * sin(l),
+  par_v = -parallax * cos(l)
+)
+
+# Latitude design matrix
+X_b <- data.frame(
+  mu_b =  mu_b,
+  A_b  = -sin(2*l) * sin(b) * cos(b),
+  C_b  = -cos(2*l) * sin(b) * cos(b),
+  K    = -sin(b) * cos(b),
+  par_u_b =  parallax * cos(l) * sin(b),
+  par_v_b =  parallax * sin(l) * sin(b),
+  par_w_b = -parallax * cos(b)
 )
 
 
-lm_l <- lm(mu_l ~ 0 + A_l + C_l + B + par_u + par_v + cluster, data = X)
-lm_b <- lm(mu_b ~ 0 + A_b + C_b + K + par_u_b + par_v_b + par_w_b + cluster, data = X)
+lm_l <- lm(mu_l ~ 0 + A_l + C_l + B + par_u + par_v, data = X_l)
+lm_b <- lm(mu_b ~ 0 + A_b + C_b + K + par_u_b + par_v_b + par_w_b, data = X_b)
 
 
-robust_l <- coeftest(lm_l, vcov = sandwich)
-robust_b <- coeftest(lm_b, vcov = sandwich)
+library(sandwich)
+library(lmtest)
+
+# Cluster-robust covariance matrices
+vcov_l <- vcovCL(lm_l, cluster = df$cluster)
+vcov_b <- vcovCL(lm_b, cluster = df$cluster)
+
+# Coefficient tables with clustered SEs
+robust_l <- coeftest(lm_l, vcov = vcov_l)
+robust_b <- coeftest(lm_b, vcov = vcov_b)
+
 robust_se_l <- robust_l[, "Std. Error"]
 robust_se_b <- robust_b[, "Std. Error"]
 
@@ -228,12 +244,12 @@ v <- mean(c(coef(lm_l)["par_v"], coef(lm_b)["par_v_b"]))
 v_err <- mean(c(robust_se_l["par_v"], robust_se_b["par_v_b"]))
 
 # ~ ~ ~ print the values 
-paste0("A <- ", round(A_est, 3), " pm ", round(A_est_err, 3))
-paste0("B <- ", round(coef(lm_l)["B"], 4), " pm ", round(robust_se_l["B"], 3))
-paste0("C <- ", round(C_est, 3), " pm ", round(C_est_err, 3))
-paste0("K <- ", round(coef(lm_b)["K"], 3), " pm ", round(robust_se_b["K"], 3))
+cat(paste0("A = ", round(A_est, 3), " ± ", round(A_est_err, 3), "\n"))
+cat(paste0("B = ", round(coef(lm_l)["B"], 3), " ± ", round(se_l["B"], 3), "\n"))
+cat(paste0("C = ", round(C_est, 3), " ± ", round(C_est_err, 3), "\n"))
+cat(paste0("K = ", round(coef(lm_b)["K"], 3), " ± ", round(se_b["K"], 3), "\n"))
 
-paste0("u <- ", round(u, 3), " pm ", round(u_err, 3))
-paste0("v <- ", round(v, 3), " pm ", round(v_err, 3))
-paste0("w <- ", round(coef(lm_b)["par_w_b"], 4), " pm ", round(robust_se_b["par_w_b"], 3))
+cat(paste0("u = ", round(u, 3), " ± ", round(u_err, 3), "\n"))
+cat(paste0("v = ", round(v, 3), " ± ", round(v_err, 3), "\n"))
+cat(paste0("w = ", round(coef(lm_b)["par_w_b"], 3)," ± ", round(se_b["par_w_b"], 3), "\n"))
 
