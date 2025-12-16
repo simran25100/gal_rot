@@ -117,6 +117,7 @@ distance_ranges <- list(
   list(d_min = 1200, d_max = 2000, label = "255", ylim = c(-50, 30))
 )
 
+
 cex = 1.9
 pcex = 2
 lwd = 3.5
@@ -162,10 +163,8 @@ for (i in seq_along(distance_ranges)) {
   features <- cbind(data_s$l, mu_l_sub, data_s$dist_corr)
   mul.mclust <- Mclust(features, G = 1:20)
   # plot(mul.mclust,ylim = ylim, xlim = c(360, 0))
-  new_clusters <- mul.mclust$classification + cluster_offset
-  df$cluster[bin_filter] <- new_clusters
+  df$cluster[df$dist_corr >= d_min & df$dist_corr < d_max] <- mul.mclust$classification
   
-  cluster_offset <- max(df$cluster, na.rm = TRUE)  
   plot(mul.mclust, what = "BIC",
        main = paste("BIC — Bin", label))
   
@@ -179,7 +178,8 @@ for (i in seq_along(distance_ranges)) {
 
 # Close PDF
 dev.off()
-df$cluster <- factor(df$cluster)
+# df$cluster <- factor(df$cluster)
+df$cluster = factor(df$cluster)
 
 # Longitude design matrix
 X_l <- data.frame(
@@ -209,10 +209,11 @@ lm_b <- lm(mu_b ~ 0 + A_b + C_b + K + par_u_b + par_v_b + par_w_b, data = X_b)
 
 library(sandwich)
 library(lmtest)
+cluster = factor(!is.na(df$cluster))
 
 # Cluster-robust covariance matrices
-vcov_l <- vcovCL(lm_l, cluster = df$cluster)
-vcov_b <- vcovCL(lm_b, cluster = df$cluster)
+vcov_l <- vcovCL(lm_l, cluster = cluster)
+vcov_b <- vcovCL(lm_b, cluster = cluster)
 
 # Coefficient tables with clustered SEs
 robust_l <- coeftest(lm_l, vcov = vcov_l)
@@ -245,11 +246,11 @@ v_err <- mean(c(robust_se_l["par_v"], robust_se_b["par_v_b"]))
 
 # ~ ~ ~ print the values 
 cat(paste0("A = ", round(A_est, 3), " ± ", round(A_est_err, 3), "\n"))
-cat(paste0("B = ", round(coef(lm_l)["B"], 3), " ± ", round(se_l["B"], 3), "\n"))
+cat(paste0("B = ", round(coef(lm_l)["B"], 3), " ± ", round(robust_se_l["B"], 3), "\n"))
 cat(paste0("C = ", round(C_est, 3), " ± ", round(C_est_err, 3), "\n"))
-cat(paste0("K = ", round(coef(lm_b)["K"], 3), " ± ", round(se_b["K"], 3), "\n"))
+cat(paste0("K = ", round(coef(lm_b)["K"], 3), " ± ", round(robust_se_b["K"], 3), "\n"))
 
 cat(paste0("u = ", round(u, 3), " ± ", round(u_err, 3), "\n"))
 cat(paste0("v = ", round(v, 3), " ± ", round(v_err, 3), "\n"))
-cat(paste0("w = ", round(coef(lm_b)["par_w_b"], 3)," ± ", round(se_b["par_w_b"], 3), "\n"))
+cat(paste0("w = ", round(coef(lm_b)["par_w_b"], 3)," ± ", round(robust_se_b["par_w_b"], 3), "\n"))
 
